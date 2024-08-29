@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import the CSS file for styling
+import { useNavigate } from 'react-router-dom'; 
 import '../mycss/Input.css'
 const Input2 = () => {
   const [p1, setP1] = useState('');

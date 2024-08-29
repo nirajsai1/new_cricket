@@ -30,24 +30,24 @@ body {
 
 .option-item {
     padding: 10px 20px;
-    background-color: #e8b871; /* Muted orange */
+    background-color: #e8b871; 
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .option-item:hover {
-    background-color: #d79552; /* Darker shade of the original color */
+    background-color: #d79552; 
 }
 
 .selected {
-    background-color: #b0b0b0; /* Grey color for selected items */
+    background-color: #b0b0b0; 
     cursor: not-allowed;
 }
 
 .next-button {
     padding: 10px 20px;
-    background-color: #4caf50; /* Green */
+    background-color: #4caf50; 
     color: white;
     border: none;
     border-radius: 5px;
@@ -57,7 +57,7 @@ body {
 }
 
 .next-button:hover {
-    background-color: #388e3c; /* Darker green */
+    background-color: #388e3c; 
 }
 
 .teams-container {

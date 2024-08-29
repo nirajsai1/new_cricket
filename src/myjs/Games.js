@@ -15,13 +15,9 @@ const Games = () => {
     const [list2, setList2] = useState([]);
     const [aop, setAop] = useState(0);
     const [bop, setBop] = useState(0);
-    const [turnCount, setTurnCount] = useState(0); // Track the number of total turns
-
-    // Player categories in order
+    const [turnCount, setTurnCount] = useState(0); 
     const playerTypes = [batsman, allrounder, bowler];
-    const [categoryIndex, setCategoryIndex] = useState(0); // Track the current category (0 for batsman, 1 for allrounder, 2 for bowler)
-
-    // Function to get options for the current category
+    const [categoryIndex, setCategoryIndex] = useState(0); 
     const getOptions = () => {
         const currentType = playerTypes[categoryIndex];
         const newOptions = [];
@@ -34,7 +30,7 @@ const Games = () => {
             }
         }
         setOptions(newOptions);
-        setSelectedPlayers([]); // Reset selected players on new options
+        setSelectedPlayers([]); 
     };
 
     useEffect(() => {
@@ -42,10 +38,8 @@ const Games = () => {
         const savedName2 = localStorage.getItem('name2');
         if (savedName1) setName1(savedName1);
         if (savedName2) setName2(savedName2);
-        getOptions(); // Initialize the first set of options (batsmen)
+        getOptions(); 
     }, []);
-
-    // Get the rating of a player
     const getRating = (playerName) => {
         const player =
             batsman.find(item => item.name === playerName) ||
@@ -54,31 +48,28 @@ const Games = () => {
 
         return player ? player.rating : 0;
     };
-
-    // Handle the next button click
     const next = () => {
         if (start === 'Player1' && p1Selection !== '') {
             const rating = getRating(p1Selection);
             setList1(prevList => [...prevList, `${p1Selection}: ${rating}`]);
             setAop(prevAop => prevAop + rating);
-            setStart('Player2'); // Switch turn to Player2
-            setP1Selection(''); // Clear Player1's selection
+            setStart('Player2');
+            setP1Selection(''); 
 
         } else if (start === 'Player2' && p2Selection !== '') {
             const rating = getRating(p2Selection);
             setList2(prevList => [...prevList, `${p2Selection}: ${rating}`]);
             setBop(prevBop => prevBop + rating);
-            setStart('Player1'); // Switch turn to Player1
-            setP2Selection(''); // Clear Player2's selection
+            setStart('Player1'); 
+            setP2Selection(''); 
 
-            // After Player2's turn, check if it's time to refresh options
             setTurnCount(prevCount => {
                 const newCount = prevCount + 1;
 
-                if (newCount % 2 === 0) { // Every two turns (one turn for each player)
+                if (newCount % 2 === 0) {
                     if (categoryIndex < 2) {
-                        setCategoryIndex(prevIndex => prevIndex + 1); // Move to the next category
-                        getOptions(); // Refresh options for the new category
+                        setCategoryIndex(prevIndex => prevIndex + 1);
+                        getOptions(); 
                     }
                 }
                 
@@ -87,14 +78,13 @@ const Games = () => {
         }
     };
 
-    // Handle player selection
     const addPlayer = (playerName) => {
         if (start === 'Player1') {
             setP1Selection(playerName);
         } else {
             setP2Selection(playerName);
         }
-        setSelectedPlayers(prevSelected => [...prevSelected, playerName]); // Mark player as selected
+        setSelectedPlayers(prevSelected => [...prevSelected, playerName]); 
     };
 
     return (

@@ -30,7 +30,7 @@ p {
 .category {
     text-align: center;
     font-size: 20px;
-    color: #007bff; /* Category text color */
+    color: #007bff; 
     font-weight: bold;
     margin-bottom: 20px;
 }
@@ -45,7 +45,7 @@ ul {
 }
 
 ul li {
-    background-color: silver; /* Default color for options */
+    background-color: silver; 
     color: #fff;
     padding: 10px 15px;
     margin: 5px;
@@ -55,7 +55,7 @@ ul li {
 }
 
 ul li.selected {
-    background-color: green; /* Color for selected option */
+    background-color: green; 
 }
 
 ul li:hover {
@@ -72,7 +72,7 @@ ul li:hover {
 
 .team-list ul {
     display: flex;
-    gap: 10px; /* Space between selected items */
+    gap: 10px; 
     flex-wrap: wrap;
 }
 
@@ -83,18 +83,18 @@ ul li:hover {
     margin: 0;
     border-radius: 4px;
     text-align: center;
-    white-space: nowrap; /* Prevent line breaks in the item */
+    white-space: nowrap; 
 }
 
 .win-message {
     text-align: center;
-    font-size: 28px; /* Increased font size */
-    color: #ffffff; /* Text color */
-    background-color: #28a745; /* Background color */
+    font-size: 28px; 
+    color: #ffffff;
+    background-color: #28a745; 
     font-weight: bold;
     padding: 15px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); 
     margin-top: 20px;
     animation: fadeIn 1s ease-in-out, bounce 1s ease-in-out infinite alternate;
 }
@@ -104,7 +104,7 @@ button {
     margin: 20px auto;
     padding: 10px 20px;
     font-size: 18px;
-    background-color: #17a2b8; /* Button background color */
+    background-color: #17a2b8; 
     color: #ffffff;
     border: none;
     border-radius: 8px;
@@ -113,10 +113,9 @@ button {
 }
 
 button:hover {
-    background-color: #138496; /* Hover effect for button */
+    background-color: #138496; 
 }
 
-/* Keyframes for fade-in animation */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -128,7 +127,6 @@ button:hover {
     }
 }
 
-/* Keyframes for a subtle bounce effect */
 @keyframes bounce {
     from {
         transform: translateY(0);

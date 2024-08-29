@@ -15,7 +15,6 @@ const Fourp = () => {
     const [win, setWin] = useState('');
     const [leadingPlayer, setLeadingPlayer] = useState('');
     
-    // Retrieve player names from local storage
     const playerNames = [
         localStorage.getItem('name1') || 'Player 1',
         localStorage.getItem('name2') || 'Player 2',

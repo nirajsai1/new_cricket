@@ -18,9 +18,9 @@ const Threep = () => {
     const [l2, setL2] = useState([]);
     const [l3, setL3] = useState([]);
     const [c, setC] = useState(1);
-    const [aob, setAob] = useState(0);  // Player 1 score
-    const [bob, setBob] = useState(0);  // Player 2 score
-    const [cob, setCob] = useState(0);  // Player 3 score
+    const [aob, setAob] = useState(0);  
+    const [bob, setBob] = useState(0);  
+    const [cob, setCob] = useState(0);  
     const [win, setWin] = useState('');
     const [selectedOptions, setSelectedOptions] = useState([]);
     const playerData = {
@@ -52,7 +52,7 @@ const Threep = () => {
     };
 
     const opt = (item) => {
-        if (win) return; // Disable further selection if the game has ended
+        if (win) return; 
 
         const playerTurn = chances[c - 1];
         const playerRating = rating(item);
@@ -128,7 +128,7 @@ const Threep = () => {
             </ul>
             <div className="player-blocks">
                 <div className="team-list">
-                    <p>{player1}'s team: <span className="player-score">{aob}</span></p> {/* Display score next to Player 1's name */}
+                    <p>{player1}'s team: <span className="player-score">{aob}</span></p> 
                     <ul>
                         {l1.map((item, ind) => (
                             <li key={ind}>{item}</li>
@@ -136,7 +136,7 @@ const Threep = () => {
                     </ul>
                 </div>
                 <div className="team-list">
-                    <p>{player2}'s team: <span className="player-score">{bob}</span></p> {/* Display score next to Player 2's name */}
+                    <p>{player2}'s team: <span className="player-score">{bob}</span></p>
                     <ul>
                         {l2.map((item, ind) => (
                             <li key={ind}>{item}</li>
@@ -144,7 +144,7 @@ const Threep = () => {
                     </ul>
                 </div>
                 <div className="team-list">
-                    <p>{player3}'s team: <span className="player-score">{cob}</span></p> {/* Display score next to Player 3's name */}
+                    <p>{player3}'s team: <span className="player-score">{cob}</span></p>
                     <ul>
                         {l3.map((item, ind) => (
                             <li key={ind}>{item}</li>
