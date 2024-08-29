@@ -10,7 +10,7 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    max-width: 600px;
+    max-width: 90%;
     margin: auto;
 }
 
@@ -23,6 +23,7 @@ body {
     list-style-type: none;
     padding: 0;
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
     margin-bottom: 20px;
@@ -62,12 +63,14 @@ body {
 
 .teams-container {
     display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
     justify-content: space-around;
     width: 100%;
 }
 
 .team {
-    width: 45%;
+    flex: 1 1 45%;
     background-color: #fff;
     padding: 15px;
     border-radius: 8px;
@@ -87,4 +90,52 @@ body {
 
 .team ul li {
     padding: 5px 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .game-container {
+        padding: 15px;
+    }
+
+    .start-text {
+        font-size: 1.2rem;
+    }
+
+    .options-list {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .option-item {
+        width: 100%;
+        text-align: center;
+    }
+
+    .next-button {
+        width: 100%;
+    }
+
+    .teams-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .team {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .start-text {
+        font-size: 1rem;
+    }
+
+    .option-item {
+        padding: 8px 15px;
+    }
+
+    .next-button {
+        padding: 8px 15px;
+    }
 }

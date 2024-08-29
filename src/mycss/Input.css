@@ -1,5 +1,5 @@
 .input-container {
-    max-width: 500px;
+    max-width: 90%; /* Adjusted to be more responsive */
     margin: 0 auto;
     padding: 20px;
     background-color: #fff;
@@ -46,4 +46,36 @@ h2 {
 
 .start-button:hover {
     background-color: #0056b3;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .input-container {
+        padding: 15px;
+    }
+
+    .start-button {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .input-container {
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 1.2rem; /* Adjust font size for smaller screens */
+    }
+
+    .input-field {
+        padding: 8px;
+        margin: 8px 0;
+    }
+
+    .start-button {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
 }
