@@ -1,0 +1,90 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f3f1f0;
+    color: #333;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+}
+
+.start-text {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.options-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.option-item {
+    padding: 10px 20px;
+    background-color: #e8b871; /* Muted orange */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.option-item:hover {
+    background-color: #d79552; /* Darker shade of the original color */
+}
+
+.selected {
+    background-color: #b0b0b0; /* Grey color for selected items */
+    cursor: not-allowed;
+}
+
+.next-button {
+    padding: 10px 20px;
+    background-color: #4caf50; /* Green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.next-button:hover {
+    background-color: #388e3c; /* Darker green */
+}
+
+.teams-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.team {
+    width: 45%;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.team h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.team ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.team ul li {
+    padding: 5px 0;
+}
