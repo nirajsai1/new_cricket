@@ -7,7 +7,7 @@ const Threep = () => {
     const categories = ['batsman', 'bowler', 'allrounder'];
     const [ci, setCi] = useState(0);
     const [options, setOptions] = useState([]);
-    
+    const [num,setNum]=useState(0);
     const player1 = localStorage.getItem('name1') || 'Player1';
     const player2 = localStorage.getItem('name2') || 'Player2';
     const player3 = localStorage.getItem('name3') || 'Player3';
@@ -48,6 +48,8 @@ const Threep = () => {
 
     const rating = (item) => {
         const player = batsman.find(h => h.name === item) || bowler.find(h => h.name === item) || allrounder.find(h => h.name === item);
+        setNum(player.rating);
+        console.log(player.rating);
         return player ? player.rating : 0;
     };
 
@@ -73,11 +75,12 @@ const Threep = () => {
     };
 
     const result = () => {
-        if (aob > bob && aob > cob) {
+        console.log(aob);console.log(bob);console.log(cob);
+        if (aob > bob+num && aob > cob) {
             setWin(player1);
-        } else if (bob > aob && bob > cob) {
+        } else if (bob+num > aob && bob+num > cob) {
             setWin(player2);
-        } else if (cob > aob && cob > bob) {
+        } else if (cob > aob && cob > bob+num) {
             setWin(player3);
         } else {
             setWin('Tie');

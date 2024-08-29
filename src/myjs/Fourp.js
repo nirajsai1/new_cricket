@@ -4,6 +4,7 @@ import batsman from '../myjson/batsman.json';
 import bowler from '../myjson/bowlers.json';
 import allrounder from '../myjson/allrounders.json';
 import wicketKeeper from '../myjson/wicketkeepers.json';
+
 const Fourp = () => {
     const categories = ['batsman', 'bowler', 'allrounder', 'wicket keeper'];
     const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
@@ -14,7 +15,7 @@ const Fourp = () => {
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [win, setWin] = useState('');
     const [leadingPlayer, setLeadingPlayer] = useState('');
-    
+    const [num,setNum]=useState(0);
     const playerNames = [
         localStorage.getItem('name1') || 'Player 1',
         localStorage.getItem('name2') || 'Player 2',
@@ -54,6 +55,7 @@ const Fourp = () => {
 
     const rating = (item) => {
         const player = [...batsman, ...bowler, ...allrounder, ...wicketKeeper].find(h => h.name === item);
+        setNum(player.rating);
         return player ? player.rating : 0;
     };
 
@@ -62,48 +64,63 @@ const Fourp = () => {
         const currentPlayerIndex = playerOrder[(round - 1) % 4];
         const playerRating = rating(item);
 
-        if (round <= 16) {
-            setSelectedOptions(prev => [...prev, item]);
-            const updatedTeams = [...playerTeams];
-            updatedTeams[currentPlayerIndex].push(`${item}:${playerRating}`);
-            setPlayerTeams(updatedTeams);
+        setSelectedOptions(prev => [...prev, item]);
 
-            const updatedScores = [...playerScores];
+        const updatedTeams = [...playerTeams];
+        updatedTeams[currentPlayerIndex].push(`${item}:${playerRating}`);
+        setPlayerTeams(updatedTeams);
+
+        setPlayerScores(prevScores => {
+            const updatedScores = [...prevScores];
             updatedScores[currentPlayerIndex] += playerRating;
-            setPlayerScores(updatedScores);
+            return updatedScores;
+        });
 
-            next();
-        }
+        next();
     };
 
     const next = () => {
         if (round < 16) {
-            setRound(prev => prev + 1);
-            if (round % 4 === 0) {
-                setCurrentCategoryIndex(prevIndex => (prevIndex + 1) % categories.length);
-                getOptions();
-            }
-        } else {
-            setOptions([]);
-            result();
+            setRound(prev => {
+                const newRound = prev + 1;
+                if (newRound % 4 === 1 && newRound <= 16) {
+                    setCurrentCategoryIndex(prevIndex => (prevIndex + 1) % categories.length);
+                    getOptions();
+                }
+                return newRound;
+            });
+        } else if (round === 16) {
+            setTimeout(result, 0); // Calculate the result after the final move
         }
         updateLeadingPlayer();
     };
 
     const result = () => {
+        playerScores[2]=playerScores[2]+num;
         const maxScore = Math.max(...playerScores);
-        const winners = playerScores.map((score, index) => score === maxScore ? playerNames[index] : null).filter(Boolean);
+        let winners = [];
+        for (let i = 0; i < playerScores.length; i++) {
+            if (playerScores[i] === maxScore) {
+                winners.push(playerNames[i]);
+            }
+        }
 
-        if (winners.length > 1) {
-            setWin('Tie');
+        if (winners.length === 1) {
+            setWin(`${winners[0]} wins`);
         } else {
-            setWin(winners[0]);
+            setWin(`It's a draw: ${winners.join(', ')}`);
         }
     };
 
     const updateLeadingPlayer = () => {
         const maxScore = Math.max(...playerScores);
-        const leader = playerScores.map((score, index) => score === maxScore ? playerNames[index] : null).filter(Boolean)[0];
+        let leader = null;
+        for (let i = 0; i < playerScores.length; i++) {
+            if (playerScores[i] === maxScore) {
+                leader = playerNames[i];
+                break;
+            }
+        }
         setLeadingPlayer(leader || 'No Leader');
     };
 
@@ -151,7 +168,7 @@ const Fourp = () => {
                     </div>
                 ))}
             </div>
-            <p className="win-message">{win && `${win} wins`}</p>
+            <p className="win-message">{win}</p>
             <p className="leading-player">{leadingPlayer && `Leading Player: ${leadingPlayer}`}</p>
             <button onClick={resetGame}>Restart Game</button>
         </div>
@@ -159,4 +176,3 @@ const Fourp = () => {
 };
 
 export default Fourp;
-
